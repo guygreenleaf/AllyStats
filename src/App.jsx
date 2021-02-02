@@ -9,14 +9,22 @@ function App() {
 
    
     let dispScripts = () => {
-      console.log(document.getElementsByClassName("ally-accessibility-score-indicator ally-accessibility-score-indicator-medium ally-instructor-feedback"));
+      let poorAccess = document.getElementsByClassName("ally-accessibility-score-indicator ally-accessibility-score-indicator-low ally-instructor-feedback");
+      let mediumAccess = document.getElementsByClassName("ally-accessibility-score-indicator ally-accessibility-score-indicator-medium ally-instructor-feedback");
+      let highAccess = document.getElementsByClassName("ally-accessibility-score-indicator ally-accessibility-score-indicator-high ally-instructor-feedback");
+      let perfectAccess = document.getElementsByClassName("ally-accessibility-score-indicator ally-accessibility-score-indicator-perfect ally-instructor-feedback");
+      console.log(poorAccess.length)
+      console.log(mediumAccess.length)
+      console.log(highAccess.length)
+      console.log(perfectAccess.length)
     }
 
+    let grabScores = () => { 
     chrome.tabs.executeScript({code: `(${dispScripts})()`})
-
+    }
   return (
     <div className="App">
-    <button onClick={dispScripts}>Parse</button>
+    <button onClick={grabScores}>Parse</button>
     </div>
   );
 }
